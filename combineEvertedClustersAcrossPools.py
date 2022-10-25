@@ -1,5 +1,5 @@
 import sys,os
-from readDepthCorrections import readDepthCorrections
+# from readDepthCorrections import readDepthCorrections
 
 pool1FileName, pool2FileName, normconst1, normconst2, cutoff = sys.argv[1:]
 
@@ -170,5 +170,5 @@ for key in keys:
         inserts2 = "NA"
     coords = "%s,%s,%s" %(c,min(allCoords),max(allCoords))
     #print "\t".join([coords,coords1,str(freq1),inserts1,coords2,str(freq2),inserts2])
-    print "\t".join([coords,coords1,str(freq1),coords2,str(freq2)])
+    print("\t".join([coords,coords1,str(freq1),coords2,str(freq2)]))
 sys.stderr.write("%s total collisions\n" %(collisions))

@@ -115,6 +115,9 @@ for line in lines:
         freqh[(c,s,e)] = (0,"NA")
         h2[c][(s,e)] = (readcoords,origline)
 
+def cmp(a, b): # the original cmp funciton no longer works for python3
+    return (a > b) - (a < b) 
+    
 def guessBreakpoints(reads1, reads2):
     allReads = reads1+reads2
     allReads.sort(lambda x,y: cmp(x[1], y[1]))
@@ -168,4 +171,4 @@ for key in keys:
     s, e = guessBreakpoints(readCoords1, readCoords2)
     coords = "%s,%s,%s" %(c, s, e)
     #print "\t".join([coords,coords1,str(freq1),inserts1,coords2,str(freq2),inserts2])
-    print "\t".join([coords,coords1,str(freq1),coords2,str(freq2)])
+    print("\t".join([coords,coords1,str(freq1),coords2,str(freq2)]))

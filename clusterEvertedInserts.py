@@ -71,4 +71,4 @@ for cluster in clusters:
         outstr.append("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s" %(c,left_s,left_e,left_strand,left_mapqual,right_s,right_e,right_strand,right_mapqual,read))
     s = min(allcoords)
     e = max(allcoords)
-    print "%s,%s,%s\t%s" %(c,s,e,len(outstr)) + "\t" + "\t".join(outstr)
+    print("%s,%s,%s\t%s" %(c,s,e,len(outstr)) + "\t" + "\t".join(outstr))

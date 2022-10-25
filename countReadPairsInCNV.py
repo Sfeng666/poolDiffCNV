@@ -9,7 +9,7 @@ if maskFileName.lower() != "none":
             c,s,e = line.strip().split()
             if not masked.has_key(c):
                 masked[c] = {}
-            for i in xrange(int(s),int(e)+1):
+            for i in range(int(s),int(e)+1):
                 masked[c][i] = 1
 
 winsize = 1000
@@ -23,7 +23,7 @@ with open(cnvFileName) as cnvFile:
         c,s,e = coords.split(",")
         s,e = int(s), int(e)
         unmaskedLenH[(c, s, e)] = 0
-        for pos in xrange(s, e+1):
+        for pos in range(s, e+1):
             if not masked.has_key(c) or not masked[c].has_key(pos):
                 unmaskedLenH[(c, s, e)] += 1
         if not depthh.has_key(c):
@@ -69,4 +69,4 @@ for c in chrs:
     keys = depthh[c].keys()
     keys.sort()
     for s,e in keys:
-        print "%s\t%s\t%s" %(depthh[c][(s,e)][0],depthh[c][(s,e)][1],unmaskedLenH[(c, s, e)])
+        print("%s\t%s\t%s" %(depthh[c][(s,e)][0],depthh[c][(s,e)][1],unmaskedLenH[(c, s, e)]))

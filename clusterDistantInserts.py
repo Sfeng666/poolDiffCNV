@@ -23,6 +23,9 @@ def merge(cluster1,cluster2):
         newclusterh[item] = 1
     return newclusterh.keys()
 
+def cmp(a, b): # the original cmp funciton no longer works for python3
+    return (a > b) - (a < b) 
+    
 def guessBreakpoints(allReads):
     allReads.sort(lambda x,y: cmp(x[1], y[1]))
     med = len(allReads)/2
@@ -118,4 +121,4 @@ for c in keys:
             outinserts = []
             for ls,le,rs,re,isize,read in prunedCluster:
                 outinserts.append("%s,%s,%s,%s,%s,%s" %(ls,le,rs,re,isize,read))
-            print "%s,%s,%s\t%s\t%s" %(c, delS, delE, len(outinserts), "\t".join(outinserts))
+            print("%s,%s,%s\t%s\t%s" %(c, delS, delE, len(outinserts), "\t".join(outinserts)))

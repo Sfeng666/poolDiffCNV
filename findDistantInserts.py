@@ -88,7 +88,7 @@ while line:
                     if c1 != c2:
                         raise Exception
                     if rs < ls:
-                        print read,lcoords,rcoords
+                        print(read,lcoords,rcoords)
                         raise Exception
                     span = (rs - le) - 1
                     strands = strand1+strand2
@@ -96,5 +96,5 @@ while line:
                     if strands == "FR" and abs(isize) > maxcutoff:
                         svtype = "deletion"
                         if not badh.has_key(read):
-                            print "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" %(read,c1,ls,le,strand1,rs,re,strand2,svtype,"N/A","N/A",abs(isize))
+                            print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" %(read,c1,ls,le,strand1,rs,re,strand2,svtype,"N/A","N/A",abs(isize)))
     line = sys.stdin.readline()

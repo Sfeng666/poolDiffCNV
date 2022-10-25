@@ -55,7 +55,7 @@ while line:
                     s = pos1
                     e = getReadEndpoint(s,mapinfo)
                     if readh[read][0] != "":
-                        print read, flag, intFlag
+                        print(read, flag, intFlag)
                         raise Exception
                     readh[read][0] = (c,s,e,strand,mapqual,reads,quals)
                 elif c2 == "=" and pos2 < pos1 and strand2+strand == "-+":
@@ -74,11 +74,11 @@ while line:
                     if c1 != c2:
                         raise Exception
                     if rs < ls:
-                        print read,lcoords,rcoords
+                        print(read,lcoords,rcoords)
                         raise Exception
                     span = (rs - le) - 1
                     strands = strand1+strand2
                     if strands == "-+":
-                        print "\t".join([str(x) for x in [read,c1,ls,le,strand1,mapqual1,reads1,quals1,rs,re,strand2,mapqual2,reads2,quals2]])
+                        print("\t".join([str(x) for x in [read,c1,ls,le,strand1,mapqual1,reads1,quals1,rs,re,strand2,mapqual2,reads2,quals2]]))
                         del readh[read]
     line = sys.stdin.readline()
