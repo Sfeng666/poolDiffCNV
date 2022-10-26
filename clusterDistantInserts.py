@@ -21,7 +21,7 @@ def merge(cluster1,cluster2):
         newclusterh[item] = 1
     for item in cluster2:
         newclusterh[item] = 1
-    return newclusterh.keys()
+    return list(newclusterh.keys())
 
 def cmp(a, b): # the original cmp funciton no longer works for python3
     return (a > b) - (a < b) 
@@ -84,7 +84,7 @@ while line:
         clusterh[c].append([(ls,le,rs,re,isize,read)])
     line = sys.stdin.readline()
 
-keys = clusterh.keys()
+keys = list(clusterh.keys())
 keys.sort()
 for c in keys:
     i = 0

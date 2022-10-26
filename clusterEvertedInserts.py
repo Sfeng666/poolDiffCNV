@@ -16,7 +16,7 @@ def merge(clust1,clust2):
         h[item] = 1
     for item in clust2:
         h[item] = 1
-    return h.keys()
+    return list(h.keys())
 
 clusters = []
 line = sys.stdin.readline()
