@@ -7,7 +7,7 @@ if maskFileName.lower() != "none":
     with open(maskFileName) as maskFile:
         for line in maskFile:
             c,s,e = line.strip().split()
-            if not masked.has_key(c):
+            if not c in masked:
                 masked[c] = {}
             for i in range(int(s),int(e)+1):
                 masked[c][i] = 1
@@ -24,18 +24,18 @@ with open(cnvFileName) as cnvFile:
         s,e = int(s), int(e)
         unmaskedLenH[(c, s, e)] = 0
         for pos in range(s, e+1):
-            if not masked.has_key(c) or not masked[c].has_key(pos):
+            if not c in masked or not pos in masked[c]:
                 unmaskedLenH[(c, s, e)] += 1
-        if not depthh.has_key(c):
+        if not c in depthh:
             depthh[c] = {}
         depthh[c][(s,e)] = [origline,0]
         winstart = s - (s % winsize)
         winend = e - (e % winsize)
-        if not winh.has_key(c):
+        if not c in winh:
             winh[c] = {}
         w = winstart
         while w <= winend:
-            if not winh[c].has_key(w):
+            if not w in winh[c]:
                 winh[c][w] = []
             winh[c][w].append((s, e))
             w += winsize
@@ -58,7 +58,7 @@ with fopen(samFileName) as samFile:
                 assert flag[-3] == "0" and flag[-4] == "0"
                 pos = int(pos1)
                 w = pos - (pos % winsize)
-                if (not masked.has_key(c) or not masked[c].has_key(pos)) and winh.has_key(c) and winh[c].has_key(w):
+                if (not c in masked or not pos in masked[c]) and c in winh and w in winh[c]:
                     for s,e in winh[c][w]:
                          if pos >= s and pos <= e:
                             depthh[c][(s,e)][1] += 1

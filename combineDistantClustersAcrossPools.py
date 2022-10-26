@@ -46,7 +46,7 @@ for line in lines:
     l = e-s+1
     #if (c == "chrX" and ((s > 8000000 and s < 9000000) or (e > 8000000 and e < 9000000))) or l > 10000:
     #    continue
-    if not h1.has_key(c):
+    if not c in h1:
         h1[c] = {}
         h2[c] = {}
     h1[c][(s,e)] = (readcoords,origline)
@@ -95,7 +95,7 @@ for line in lines:
     readcoords.sort()
     freq = normconst2 * len(readcoords)
     found = 0
-    if not h2.has_key(c):
+    if not c in h2:
         h1[c] = {}
         h2[c] = {}
     for firsts,firste in h1[c].keys():
@@ -117,7 +117,7 @@ for line in lines:
 
 def cmp(a, b): # the original cmp funciton no longer works for python3
     return (a > b) - (a < b) 
-    
+
 def guessBreakpoints(reads1, reads2):
     allReads = reads1+reads2
     allReads.sort(lambda x,y: cmp(x[1], y[1]))
@@ -152,7 +152,7 @@ for key in keys:
     if coords1 != "NA":
         s1,e1 = coords1
         coords1 = "%s,%s,%s" %(c,s1,e1)
-    if h1[c].has_key((s,e)):
+    if (s,e) in h1[c]:
         inserts1 = "|".join(h1[c][(s,e)][1].split("\t"))
         readCoords1 = h1[c][(s,e)][0]
     else:
@@ -162,7 +162,7 @@ for key in keys:
     if coords2 != "NA":
         s2,e2 = coords2
         coords2 = "%s,%s,%s" %(c,s2,e2)
-    if h2[c].has_key((s,e)):
+    if (s,e) in h2[c]:
         inserts2 = "|".join(h2[c][(s,e)][1].split("\t"))
         readCoords2 = h2[c][(s,e)][0]
     else:

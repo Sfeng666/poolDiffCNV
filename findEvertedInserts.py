@@ -50,7 +50,7 @@ while line:
                 else:
                     strand2 = "-"
                 if c2 == "=" and pos1 < pos2 and strand+strand2 == "-+":
-                    if not readh.has_key(read):
+                    if not read in readh:
                         readh[read] = ["",""]
                     s = pos1
                     e = getReadEndpoint(s,mapinfo)
@@ -60,14 +60,14 @@ while line:
                     readh[read][0] = (c,s,e,strand,mapqual,reads,quals)
                 elif c2 == "=" and pos2 < pos1 and strand2+strand == "-+":
                     #same chromosome and this one is on the right
-                    if not readh.has_key(read):
+                    if not read in readh:
                         readh[read] = ["",""]
                     s = pos1
                     e = getReadEndpoint(s,mapinfo)
                     if readh[read][1] != "":
                         raise Exception
                     readh[read][1] = (c,s,e,strand,mapqual,reads,quals)
-                if readh.has_key(read) and readh[read][0] != "" and readh[read][1] != "":
+                if read in readh and readh[read][0] != "" and readh[read][1] != "":
                     lcoords,rcoords = readh[read]
                     c1,ls,le,strand1,mapqual1,reads1,quals1 = lcoords
                     c2,rs,re,strand2,mapqual2,reads2,quals2 = rcoords

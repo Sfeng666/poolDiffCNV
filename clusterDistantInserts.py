@@ -25,7 +25,7 @@ def merge(cluster1,cluster2):
 
 def cmp(a, b): # the original cmp funciton no longer works for python3
     return (a > b) - (a < b) 
-    
+
 def guessBreakpoints(allReads):
     allReads.sort(lambda x,y: cmp(x[1], y[1]))
     med = len(allReads)/2
@@ -75,7 +75,7 @@ line = sys.stdin.readline()
 while line:
     line = line.strip().split("\t")
     read,c,ls,le,strand1,rs,re,strand2,svtype,edsum,avg_quals,isize = line
-    if not clusterh.has_key(c):
+    if not c in clusterh:
         clusterh[c] = []
     ls,le,rs,re,isize = [int(x) for x in [ls,le,rs,re,isize]]
     if not (ls < le and le < rs and rs < re):

@@ -49,7 +49,7 @@ for line in lines:
     l = e-s+1
     readcoords = currh.keys()
     readcoords.sort()
-    if not h1.has_key(c):
+    if not c in h1:
         h1[c] = {}
         h2[c] = {}
     h1[c][(s,e)] = (readcoords,origline)
@@ -155,7 +155,7 @@ for key in keys:
         s1,e1 = coords1
         allCoords += [s1, e1]
         coords1 = "%s,%s,%s" %(c,s1,e1)
-    if h1[c].has_key((s,e)):
+    if (s,e) in h1[c]:
         inserts1 = "|".join(h1[c][(s,e)][1].split("\t"))
     else:
         inserts1 = "NA"
@@ -164,7 +164,7 @@ for key in keys:
         s2,e2 = coords2
         allCoords += [s2, e2]
         coords2 = "%s,%s,%s" %(c,s2,e2)
-    if h2[c].has_key((s,e)):
+    if (s,e) in h2[c]:
         inserts2 = "|".join(h2[c][(s,e)][1].split("\t"))
     else:
         inserts2 = "NA"

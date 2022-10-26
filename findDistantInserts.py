@@ -58,7 +58,7 @@ while line:
                         strand = "F"
                     else:
                         strand = "R"
-                    if not readh.has_key(read):
+                    if not read in readh:
                         readh[read] = ["",""]
                     s = pos1
                     e = getReadEndpoint(s,mapinfo)
@@ -72,7 +72,7 @@ while line:
                         strand = "F"
                     else:
                         strand = "R"
-                    if not readh.has_key(read):
+                    if not read in readh:
                         readh[read] = ["",""]
                     s = pos1
                     e = getReadEndpoint(s,mapinfo)
@@ -81,7 +81,7 @@ while line:
                         badh[read] = 1
                     else:
                         readh[read][1] = (c,s,e,strand)
-                if readh.has_key(read) and readh[read][0] != "" and readh[read][1] != "":
+                if read in readh and readh[read][0] != "" and readh[read][1] != "":
                     lcoords,rcoords = readh[read]
                     c1,ls,le,strand1 = lcoords
                     c2,rs,re,strand2 = rcoords
@@ -95,6 +95,6 @@ while line:
                     del readh[read]
                     if strands == "FR" and abs(isize) > maxcutoff:
                         svtype = "deletion"
-                        if not badh.has_key(read):
+                        if not read in badh:
                             print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" %(read,c1,ls,le,strand1,rs,re,strand2,svtype,"N/A","N/A",abs(isize)))
     line = sys.stdin.readline()
