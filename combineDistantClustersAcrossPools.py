@@ -115,13 +115,14 @@ for line in lines:
         freqh[(c,s,e)] = (0,"NA")
         h2[c][(s,e)] = (readcoords,origline)
 
-def cmp(a, b): # the original cmp funciton no longer works for python3
-    return (a > b) - (a < b) 
+# def cmp(a, b): # the original cmp funciton no longer works for python3
+#     return (a > b) - (a < b) 
 
 def guessBreakpoints(reads1, reads2):
     allReads = reads1+reads2
-    allReads.sort(lambda x,y: cmp(x[1], y[1]))
-    med = len(allReads)/2
+    # allReads.sort(lambda x,y: cmp(x[1], y[1]))
+    allReads.sort(key=lambda x: x[1])
+    med = int(len(allReads)/2)
     sGuess = allReads[med][1]
     eGuess = allReads[med][2]
     i1, i2 = med+1, med-1

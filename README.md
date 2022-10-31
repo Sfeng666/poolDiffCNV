@@ -99,3 +99,7 @@ where `clustered_everted_inserts_merged.tsv`, `clustered_distant_inserts_merged.
 # Beyond
 
 At this point you want to identify candidates where both the number of discordant read pairs and the read depth within the event support differentiation in allele frequency between the two samples. One possible strategy would be to take the 5% tails from the empirical distributions of each of these, and filter out all but the candidates that exceed both of these thresholds. The empirical distribution of differences in (or ratios of) the numbers of discordant read pairs could be parsed from the output of step 3. For read depth, I favor a threshold that depends on the length of the event, for example, a threshold for many length bins (i.e. for each length bin, take the read depth ratio of random genomic regions of this length, and identify the tails of these distributions). Schrider et al. (2016) did something very similar to this.
+
+# Update notes
+1. Add python3 compatibility and fix multiple incompatible issues;
+2. add annotations;

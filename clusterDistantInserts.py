@@ -23,12 +23,13 @@ def merge(cluster1,cluster2):
         newclusterh[item] = 1
     return list(newclusterh.keys())
 
-def cmp(a, b): # the original cmp funciton no longer works for python3
-    return (a > b) - (a < b) 
+# def cmp(a, b): # the original cmp funciton no longer works for python3
+#     return (a > b) - (a < b) 
 
-def guessBreakpoints(allReads):
-    allReads.sort(lambda x,y: cmp(x[1], y[1]))
-    med = len(allReads)/2
+def guessBreakpoints(allReads): # infer breakpoints of deletions at both ends by shrinking the length of deletions from the middle read
+    # allReads.sort(lambda x,y: cmp(x[1], y[1]))
+    allReads.sort(key = lambda x: x[1])
+    med = int(len(allReads)/2)
     sGuess = allReads[med][1]
     eGuess = allReads[med][2]
     i1, i2 = med+1, med-1
@@ -41,8 +42,8 @@ def guessBreakpoints(allReads):
                     eGuess = allReads[i1][2]
         if i2 >= 0:
             if allReads[i2][2] > sGuess and allReads[i2][1] < eGuess:
-                if allReads[i2][1] > sGuess:
-                    sGuess = allReads[i2][1]
+                # if allReads[i2][1] > sGuess: # this statement is useless because the list of reads was sorted by left start site, and the read i2 should have a left start site no larger than the median read 
+                #     sGuess = allReads[i2][1]
                 if allReads[i2][2] < eGuess:
                     eGuess = allReads[i2][2]
         i1+=1
@@ -51,9 +52,10 @@ def guessBreakpoints(allReads):
             break
     return sGuess, eGuess
 
-def pruneCluster(inserts):
-    inserts.sort(lambda x,y: cmp(x[1]+x[2],y[1]+y[2]))
-    medInsert = inserts[len(inserts)/2]
+def pruneCluster(inserts): # discard read pairs whose gap coordinates and insert size depart too far from those of the middle read pair
+    # inserts.sort(lambda x,y: cmp(x[1]+x[2],y[1]+y[2]))
+    inserts.sort(key=lambda x: x[1]+x[2])
+    medInsert = inserts[int(len(inserts)/2)]
     le,rs = medInsert[1:3]
     le = int(le)
     rs = int(rs)
