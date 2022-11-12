@@ -1,6 +1,6 @@
 import sys
 
-isizediffcutoff, numDistInsertCutoff, delLenCutoff = [int(x) for x in sys.argv[1:]]
+isizediffcutoff, numDistInsertCutoff, delLenCutoff = [int(float(x)) for x in sys.argv[1:]]
 diffsumcutoff=2*isizediffcutoff
 
 def overlap(cluster1,cluster2):

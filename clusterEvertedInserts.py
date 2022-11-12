@@ -1,7 +1,7 @@
 import sys,os
 
-isizediffcutoff = int(sys.argv[1])
-cutoff = isizediffcutoff*2
+isizecutoff = int(sys.argv[1])
+cutoff = isizecutoff*2
 
 def overlappingClusters(clust1,clust2):
     global cutoff
@@ -50,7 +50,7 @@ while 1:
                 #print len(clusters)
                 #raise Exception
         if not ichange:
-            sys.stderr.write("on %s of %s\r" %(i,len(clusters)))
+            sys.stderr.write("on %s of %s\n" %(i,len(clusters)))
             i += 1
         else:
             clusters[i] = currcluster
