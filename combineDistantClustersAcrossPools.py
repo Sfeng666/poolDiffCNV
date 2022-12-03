@@ -15,7 +15,7 @@ def overlappingClustersSameChr(coordls1,coordls2):
             if d1 < cutoff and d2 < cutoff:
                 goodcount += 1
             totalcount += 1
-    if goodcount/float(totalcount) > 0:
+    if goodcount/float(totalcount) > 0.75: # more stringent clustering criteria for deletions as there are over 10 times more clusters for deletions than for duplications
         return 1
     else:
         return 0
