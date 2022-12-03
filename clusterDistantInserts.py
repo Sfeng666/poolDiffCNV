@@ -119,7 +119,7 @@ for c in keys:
     clusters.sort()
     for cluster in clusters:
         delS, delE, prunedCluster = pruneCluster(cluster)
-        if len(prunedCluster) >= numDistInsertCutoff and rs-le >= delLenCutoff:
+        if len(prunedCluster) >= numDistInsertCutoff and delE - delS >= delLenCutoff:
             outinserts = []
             for ls,le,rs,re,isize,read in prunedCluster:
                 outinserts.append("%s,%s,%s,%s,%s,%s" %(ls,le,rs,re,isize,read))
