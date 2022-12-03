@@ -3,7 +3,7 @@ import sys,os
 
 pool1FileName, pool2FileName, normconst1, normconst2, cutoff = sys.argv[1:]
 
-cutoff = int(cutoff)
+cutoff = int(float(cutoff))
 normconst1, normconst2 = float(normconst1), float(normconst2)
 
 def overlappingClustersSameChr(coordls1,coordls2):
