@@ -47,7 +47,7 @@ for line in lines:
     s = min(allcoords)
     e = max(allcoords)
     l = e-s+1
-    readcoords = currh.keys()
+    readcoords = list(currh.keys())
     readcoords.sort()
     if not c in h1:
         h1[c] = {}
@@ -91,7 +91,7 @@ for line in lines:
     s = min(allcoords)
     e = max(allcoords)
     l = e-s+1
-    readcoords = currh.keys()
+    readcoords = list(currh.keys())
     readcoords.sort()
     freq = normconst2 * len(readcoords)
     found = 0
@@ -145,7 +145,7 @@ for line in lines:
         otherfreqh[(c,s,e)] = (freq,(s,e))
         freqh[(c,s,e)] = (0,"NA")
         h2[c][(s,e)] = (readcoords,origline)
-keys = freqh.keys()
+keys = list(freqh.keys())
 keys.sort()
 for key in keys:
     c,s,e = key

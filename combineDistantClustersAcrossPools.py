@@ -41,7 +41,7 @@ for line in lines:
         s1,e1,s2,e2,isize,readid = insert.split(",")
         s1,e1,s2,e2 = int(s1),int(e1),int(s2),int(e2)
         currh[(s1,e1,s2,e2)] = 1
-    readcoords = currh.keys()
+    readcoords = list(currh.keys())
     readcoords.sort()
     l = e-s+1
     #if (c == "chrX" and ((s > 8000000 and s < 9000000) or (e > 8000000 and e < 9000000))) or l > 10000:
@@ -91,7 +91,7 @@ for line in lines:
         s1,e1,s2,e2,isize,readid = insert.split(",")
         s1,e1,s2,e2 = int(s1),int(e1),int(s2),int(e2)
         currh[(s1,e1,s2,e2)] = 1
-    readcoords = currh.keys()
+    readcoords = list(currh.keys())
     readcoords.sort()
     freq = normconst2 * len(readcoords)
     found = 0
@@ -145,7 +145,7 @@ def guessBreakpoints(reads1, reads2):
             break
     return sGuess, eGuess
 
-keys = freqh.keys()
+keys = list(freqh.keys())
 keys.sort()
 for key in keys:
     c,s,e = key
